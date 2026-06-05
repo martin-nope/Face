@@ -1,12 +1,104 @@
-torch>=2.0
-torchvision>=0.15
-onnx>=1.14
-onnxruntime>=1.15
-opencv-python>=4.8
-numpy>=1.24
-pyyaml>=6.0
-insightface>=0.7
-scipy>=1.10
-matplotlib>=3.7
-tqdm>=4.65
-filterpy>=1.4.5
+# Core dependencies for Face Detection with Enhanced CNN Architectures
+# Install with: pip install -r requirements.txt
+
+# ==================== Deep Learning ====================
+# PyTorch with CUDA support
+# For CPU only:
+torch>=2.0.0           # PyTorch core
+torchvision>=0.15.0    # Vision utilities, pretrained models
+
+# For CUDA 11.8 (recommended - most stable):
+# --index-url https://download.pytorch.org/whl/cu118
+# torch==2.1.0+cu118
+# torchvision==0.16.0+cu118
+
+# For CUDA 12.1:
+# --index-url https://download.pytorch.org/whl/cu121
+# torch==2.1.0+cu121
+# torchvision==0.16.0+cu121
+
+# For CUDA 12.4 (latest):
+# --index-url https://download.pytorch.org/whl/cu124
+# torch==2.3.0+cu124
+# torchvision==0.16.0+cu124
+
+# PyTorch CUDA utilities
+torchaudio>=2.0.0; sys_platform == 'linux'  # Audio (often needed with torch)
+
+# Explicit CUDA toolkit dependencies (optional but recommended)
+nvidia-cuda-runtime-cu12>=12.1; sys_platform == 'linux'  # CUDA runtime
+nvidia-cudnn-cu12>=8.9; sys_platform == 'linux'          # cuDNN for Linux
+nvidia-cuda-nvrtc-cu12>=12.1; sys_platform == 'linux'    # CUDA NVRTC
+
+# ==================== Model Export & Optimization ====================
+onnx>=1.14.0           # Export to ONNX format
+onnxruntime>=1.15.0    # ONNX runtime (CPU/GPU)
+tensorrt>=8.6.0; sys_platform == 'linux'  # TensorRT for NVIDIA GPUs (Linux only)
+
+# ==================== Computer Vision ====================
+opencv-python>=4.8.0   # OpenCV for image processing
+opencv-contrib-python>=4.8.0  # OpenCV contrib modules
+Pillow>=10.0.0         # Image I/O
+scikit-image>=0.21.0   # Image processing utilities
+
+# ==================== Face Recognition ====================
+insightface>=0.7.0     # Face analysis library (includes arcface, etc.)
+# Note: insightface requires: pip install onnxruntime-gpu (for GPU support)
+
+# ==================== Math & Array Processing ====================
+numpy>=1.24.0,<2.0.0   # NumPy (keep <2.0 for compatibility)
+scipy>=1.10.0          # Scientific computing
+
+# ==================== Data Processing ====================
+pandas>=2.0.0          # Data manipulation
+requests>=2.31.0         # HTTP requests (for downloading images)
+
+# ==================== Configuration ====================
+pyyaml>=6.0            # YAML config parsing
+omegaconf>=2.3.0       # Advanced config management (optional)
+
+# ==================== Training Utilities ====================
+tensorboard>=2.13.0    # Training visualization
+# wandb>=0.15.0        # Weights & Biases (optional, uncomment if needed)
+tqdm>=4.65.0           # Progress bars
+thop>=0.1.1            # FLOPs/Params calculation
+
+# ==================== Augmentation ====================
+albumentations>=1.3.0  # Advanced image augmentation (optional)
+imgaug>=0.4.0          # Image augmentation (optional)
+
+# ==================== Utilities ====================
+matplotlib>=3.7.0      # Plotting
+seaborn>=0.12.0        # Statistical visualization
+filterpy>=1.4.5        # Kalman filter for tracking
+portalocker>=2.7.0     # File locking (for multi-process safe logging)
+
+# ==================== CUDA / GPU Support ====================
+nvidia-ml-py3>=7.352.0  # NVIDIA management library (for GPU monitoring)
+pynvml>=11.4.1          # Python NVML bindings
+# For GPU-accelerated DLPack operations (optional)
+cupy-cuda11x; sys_platform == 'linux'  # CUDA arrays library (Linux only)
+cupy-cuda118; sys_platform == 'win32'  # CUDA arrays library (Windows only)
+
+# ==================== Development & Testing ====================
+pytest>=7.4.0          # Unit testing
+black>=23.0.0          # Code formatting (optional)
+flake8>=6.0.0          # Linting (optional)
+mypy>=1.5.0            # Type checking (optional)
+
+# ==================== Platform Specific ====================
+# Windows-specific
+pywin32>=306; sys_platform == 'win32'
+pypiwin32>=223; sys_platform == 'win32'
+
+# macOS-specific
+# No specific requirements for macOS
+
+# ==================== Performance ====================
+# ninja>=1.11.0        # Build system for faster compilation (optional)
+# pycocotools>=2.0.6   # COCO evaluation metrics (optional)
+
+# ==================== CUDA Support (Optional) ====================
+# If using CUDA, install these after PyTorch:
+# nvidia-ml-py3>=7.352.0  # NVIDIA management library
+# pynvml>=11.4.1          # Python NVML bindings (for GPU monitoring)

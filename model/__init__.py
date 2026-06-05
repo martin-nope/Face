@@ -44,6 +44,12 @@ from model.enhanced_neck import (
 from model.head import DetectionHead
 from model.loss import FocalLoss, MultiTaskLoss, RegressionLoss
 from model.neck import FPN
+from model.unified_model import (
+    FaceDetectionModel,
+    UnifiedFaceDetectionModel,
+    create_model,
+    list_available_models,
+)
 
 __all__ = [
     # Original
@@ -82,4 +88,9 @@ __all__ = [
     "EnhancedFaceDetectionModel",
     "ModelRegistry",
     "print_model_info",
+    # Unified model
+    "UnifiedFaceDetectionModel",
+    "create_model",
+    "list_available_models",
+    "FaceDetectionModel",
 ]

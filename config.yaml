@@ -25,6 +25,10 @@ model:
   - 0.7540000081062317
   - 0.7609999775886536
   landmark_enabled: false
+
+  # NEW: Model variant selection
+  # Options: 'vanilla' (original), 'lite', 'standard', 'pro', 'max'
+  model_variant: 'vanilla'  # Set to 'standard' or 'pro' for enhanced models
 train:
   batch_size: 8
   lr: 5.0e-05
